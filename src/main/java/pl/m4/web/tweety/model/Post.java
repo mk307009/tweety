@@ -18,4 +18,22 @@ public class Post {
     public LocalDateTime getDateTime() {
         return dateTime;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Post)) return false;
+
+        Post post = (Post) o;
+
+        if (!getMessage().equals(post.getMessage())) return false;
+        return getDateTime().equals(post.getDateTime());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getMessage().hashCode();
+        result = 31 * result + getDateTime().hashCode();
+        return result;
+    }
 }
