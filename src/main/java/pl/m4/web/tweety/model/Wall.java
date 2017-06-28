@@ -40,4 +40,21 @@ public class Wall {
     public void removeFollow(String author) {
         following.remove(author);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Wall)) return false;
+
+        Wall wall = (Wall) o;
+
+        if (!getAuthor().equals(wall.getAuthor())) return false;
+        if (getPosts() != null ? !getPosts().equals(wall.getPosts()) : wall.getPosts() != null) return false;
+        return following != null ? following.equals(wall.following) : wall.following == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return getAuthor().hashCode();
+    }
 }
